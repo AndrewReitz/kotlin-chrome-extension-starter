@@ -1,0 +1,13 @@
+= Kotlin Chrome Extension Starter
+
+Project template to get you started writing chrome extensions in Kotlin.
+
+== FAQ
+
+Q: How do I use this.
+A: Clone the project or 
+
+Q: Couldn't this be a a lazybones project?
+A: Yes, and it it gets enough use I'll consider converting it.
+
+
