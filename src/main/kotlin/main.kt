@@ -1,3 +1,3 @@
 fun main() {
-    println("Hi")
+    println("Hello Kotlin Chrome Extension!")
 }

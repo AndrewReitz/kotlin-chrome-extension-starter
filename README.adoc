@@ -2,12 +2,18 @@
 
 Project template to get you started writing chrome extensions in Kotlin.
 
-== FAQ
+== Usage
 
-Q: How do I use this.
-A: Clone the project or 
+Clone the project or download the source files as a zip. Then rename the project in settings.gradle.kts,
+change the group and version in build.gradle.kts to what you want. Then in the expand block for the
+manifest.json add the extension name and description. Finally customize to your desire. This only provides the backend
+script but following what's in the project adding more content shouldn't be to bad.
+
+To test run `gradlew installDist` then point the extension to the folder in `build/install`.
+
+To deploy run `gradlew distZip` and upload the zip file located in `build/distributions` to the chrome store.
+
+== FAQ
 
 Q: Couldn't this be a a lazybones project?
 A: Yes, and it it gets enough use I'll consider converting it.
-
-
