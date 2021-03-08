@@ -45,3 +45,7 @@ distributions {
         }
     }
 }
+
+tasks.named("installDist").configure {
+    dependsOn(tasks.named("assemble"))
+}
