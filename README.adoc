@@ -1,6 +1,30 @@
 = Kotlin Chrome Extension Starter
 
 Project template to get you started writing chrome extensions in Kotlin.
+Current implementation is the app from getting started of the
+[chrome extension documentation]https://developer.chrome.com/docs/extensions/mv3/getstarted/).
+
+== Layout
+
+=== Top level
+
+Top level combines all the submoules together making the chrome extension. The manifest.json is the manifest
+for the extension, values can be dynamically replaced in the build.gradle.kts if needed. The resources folder
+is where images and other assets can be places and added into the chrome extension.
+
+=== background
+
+Creates the background.js script for the background tasks of the chrome extension.
+
+=== popup
+
+Creates the popup.js and contains the popup.html and css for the popup when clicking the icon of the chrome extesion.
+
+=== chrome-platform
+
+Creates external references around the chrome api to provide type safety. Only the ones needed for the
+getting started app have been implemented but this starter will accept pull requests and if / when it becomes
+fairly complete a separate library will be published for all to use.
 
 == Usage
 

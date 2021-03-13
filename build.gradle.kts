@@ -1,28 +1,27 @@
 plugins {
     distribution
-    kotlin("js") version "1.4.30"
+    kotlin("js") version "1.4.31" apply false
 }
 
-group = "cash.andrew"
-version = "0.1"
+description = "Combines all the submodules together to build the chrome extension."
 
-repositories {
-    jcenter()
-    mavenCentral()
-    maven { url = uri("https://dl.bintray.com/kotlin/kotlinx") }
+allprojects {
+    group = "cash.andrew"
+    version = "0.1"
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+}
+
+configurations {
+    create("content")
 }
 
 dependencies {
-    testImplementation(kotlin("test-js"))
-    implementation("org.jetbrains.kotlinx:kotlinx-html:0.7.2")
-}
-
-kotlin {
-    js(IR) {
-        browser {
-            binaries.executable()
-        }
-    }
+    "content"(project(path = ":background", configuration = "content"))
+    "content"(project(path = ":popup", configuration = "content"))
 }
 
 distributions {
@@ -31,15 +30,16 @@ distributions {
         contents {
             from("manifest.json") {
                 expand(
-                    "name" to "Test", // project.name.split("-").joinToString(" ") { it.capitolize() },
+                    "name" to "Extension Name Goes Here",
                     "version" to "${project.version}",
                     "description" to "description of extension goes here"
                 )
             }
 
-            from("$buildDir/distributions/${project.name}.js") {
-                rename { "background.js" }
-            }
+            val content by configurations
+            from(content)
+
+            from(file("resources"))
 
             into("/")
         }
@@ -48,4 +48,8 @@ distributions {
 
 tasks.named("installDist").configure {
     dependsOn(tasks.named("assemble"))
+}
+
+tasks.named("distTar").configure {
+  enabled = false
 }
